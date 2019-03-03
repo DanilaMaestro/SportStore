@@ -1,0 +1,19 @@
+﻿@using System.Collections.Generic;
+@using SportStore.Model.Entities;
+@using SportStore.WebUI.Models;
+
+@model ProductListViewModel
+
+@{
+    ViewBag.Title = "List";
+}
+
+@foreach (Product p in Model.Products)
+{
+    Html.RenderPartial("ProductSummary", p);
+}
+
+    <div class="pager">
+        @Html.HtmlLinks(Model.PageInfo, x => Url.Action("List", new { page = x, category = Model.PageInfo.CurrentCategory }))
+    </div>
+
